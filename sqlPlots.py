@@ -63,7 +63,7 @@ def scatterplot_by_country(country):
 
     fig.show()
 
-def query_gym_database():
+def query_pivoted_database():
     with sqlite3.connect('gym') as conn:
         cmd = f'''
         WITH AthleteScores AS (

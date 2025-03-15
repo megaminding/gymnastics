@@ -1,9 +1,11 @@
 from plotly import express as px
 import numpy as np
-def add_user_entry(df):
+def add_user_entry(df, FirstName, LastName, Country, BB_PredictedScore, VT_PredictedScore, FX_PredictedScore, UB_PredictedScore):
     index = len(df)
-    df.loc[index] = ['Test', 'Test','USA', 15, 15, 15, 15]
+    # df.loc[index] = ['Test', 'Test','USA', 15, 15, 15, 15]
+    df.loc[index] = [FirstName, LastName, Country, BB_PredictedScore, VT_PredictedScore, FX_PredictedScore, UB_PredictedScore]
     print(df)
+    return df
 
 
 def delete_recent_entry(df):
@@ -38,7 +40,7 @@ def monte_carlo(df):
 
 def medal_count_by_country(df, country):
     results_by_country = (df[df['Country']==country]).head()
-    results_by_country
+    print(results_by_country)
 
     fig = px.histogram(results_by_country, 
                     x="LastName", 
@@ -53,4 +55,4 @@ def medal_count_by_country(df, country):
         legend_title="Medal Type",
     )
 
-    fig.show()
+    return fig
