@@ -1,19 +1,54 @@
 from plotly import express as px
 import numpy as np
 def add_user_entry(df, FirstName, LastName, Country, BB_PredictedScore, VT_PredictedScore, FX_PredictedScore, UB_PredictedScore):
+    """
+    This function allows users to add a new entry into the database
+
+    Args:
+        df: dataframe
+        FirstName
+        LastName
+        Country
+        BB_PredictedScore
+        VT_PredictedScore
+        FX_PredictedScore
+        UB_PredictedScore
+
+    Returns:
+        dataframe
+    """
     index = len(df)
-    # df.loc[index] = ['Test', 'Test','USA', 15, 15, 15, 15]
     df.loc[index] = [FirstName, LastName, Country, BB_PredictedScore, VT_PredictedScore, FX_PredictedScore, UB_PredictedScore]
     print(df)
     return df
 
 
 def delete_recent_entry(df):
+    """
+    This function allows users to delete the most recent entry of a database
+
+    Args:
+        df: dataframe
+      
+
+    Returns:
+        dataframe
+    """
     index = len(df)
     df = df.drop(index - 1)
     print(df)
     
 def monte_carlo(df):
+    """
+    This function allows users to run Monte Carlo simulations to see the expected medal count of each gymnast
+
+    Args:
+        df: dataframe
+      
+
+    Returns:
+        dataframe
+    """
     list_of_events = ['BB', 'VT', 'FX', 'UB']
 
     num_simulations = 1000
@@ -39,6 +74,17 @@ def monte_carlo(df):
 
 
 def medal_count_by_country(df, country):
+    """
+    This function visualizes the athlete's who were able to win medals for their country in the simulation
+
+    Args:
+        df: dataframe
+        country
+      
+
+    Returns:
+        dataframe
+    """
     results_by_country = (df[df['Country']==country]).head()
     print(results_by_country)
 
